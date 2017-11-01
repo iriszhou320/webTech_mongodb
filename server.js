@@ -3,8 +3,11 @@ var app = express(); //define the app using express
 var bodyParser = require("body-parser");
 
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o');
+mongoose.Promise = global.Promise;
+
+var Promise = mongoose.connect('mongodb://localhost:27017/bears', {useMongoClient: true});
 //grab the mongoose package and connect to the remote database 
+
 
 var Bear = require("./bear")
 
@@ -34,6 +37,36 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
+
+//on routes for our API will happen here
+
+router.route('/bears')
+
+   //create a bear (accessed at POST)
+   .post(function(req, res){
+       
+       var bear = new Bear(); //create a new instance of bear 
+       bear.name = req.body.name;
+       
+       //save the bear and check for errors
+       bear.save(function(err){
+           if(err){
+            //   res.json({ message :"err"});
+              res.send(err);
+              } 
+            res.json({ message : 'Bear created!'});
+       });
+    })
+    
+    .get(function(req, res){
+      Bear.find(function(err, bears){
+          if(err)
+          {res.send(err);}
+          
+          res.json(bears);
+          
+      });  
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
