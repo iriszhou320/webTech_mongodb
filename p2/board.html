@@ -8,20 +8,20 @@
 </head>
 
 <body onload = "displayEntries()">
-    <div id = time>Current Time: </div>
+    <div id = time></div>
     <div>
         <ol id = "entriesList1"></ol>
     </div>
     <div>
-    <label for="">Message for Calculus:</label><br>
+    <label id = "label" for="">Message for Calculus:</label><br>
     <textarea id = "calculus" placeholder="You can type any message for Caluculus and click send button to finish"></textarea>
     <button id = "calcSubmit" onclick = 'sendCalc()'>Send</button><br><br>
     <div id = "entriesWeb">
         <ol id = entriesList2></ol>
     </div>
-    <label for="">Message for Web Tech:</label><br>
+    <label id = "label" for="">Message for Web Tech:</label><br>
     <textarea id = "webtech" placeholder="You can type any message for Web Tech and click send button to finish"></textarea>
-    <button id = "webtechSubmit" onclick = 'sendWeb(); displayEntries'>Send</button>
+    <button id = "webtechSubmit" onclick = 'sendWeb()'>Send</button>
     </div>
 </body>
     

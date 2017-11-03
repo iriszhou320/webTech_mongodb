@@ -7,9 +7,21 @@ function createNode(element){
 function append(parent, el) {
     return parent.appendChild(el);
   }
+  
+function removeChild(root) {
+    while ( root.firstChild ) {
+      root.removeChild( root.firstChild );
+    }
+  }
     
 //functional code 
 function displayEntries(){
+    
+    const ul = document.getElementById("entriesList1");
+    removeChild(ul);
+    
+    const ul2 = document.getElementById("entriesList2");
+    removeChild(ul2);
     
     //timestamp
     var dt= new Date();
@@ -38,14 +50,15 @@ function displayEntries(){
            entriesList1.appendChild(entry);
        }
        
-       for(var j = c.length-1; j>= c.length-20; j--){
+       for(var j = w.length-1; j>= w.length-20; j--){
            entry = createNode("li");
            entry.innerHTML = w[j];
            entriesList2.appendChild(entry);
        }
      })
+    
 }
-   
+  
 
 function sendCalc(){
     var textCalc = document.getElementById("calculus");
@@ -69,7 +82,7 @@ function sendCalc(){
              'Content-Type': 'application/x-www-form-urlencoded'
          },
          body: encoded
-    })
+    }).then(displayEntries())
     
     
     }
@@ -96,6 +109,7 @@ function sendCalc(){
              'Content-Type': 'application/x-www-form-urlencoded'
          },
          body: encoded2
-    })
+    }).then(displayEntries())
+    
     }
     
