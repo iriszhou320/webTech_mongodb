@@ -48,6 +48,7 @@ router.route('/bears')
        var bear = new Bear(); //create a new instance of bear 
        bear.name = req.body.name;
        bear.message = req.body.message;
+       bear.time = req.body.time;
        
     res.setHeader("Access-Control-Allow-Origin", "*");
        //save the bear and check for errors

@@ -24,9 +24,8 @@ function displayEntries(){
     removeChild(ul2);
     
     //timestamp
-    var dt= new Date();
-    var utcDate = dt.toUTCString();
-    time.innerHTML = "current time is "+utcDate;
+    
+  
     //fetch 
     fetch("https://se3316-lab3-iriszhou.c9users.io:8080/api/bears/")
     .then(function(res){
@@ -46,7 +45,7 @@ function displayEntries(){
        //append to the list 
        for(var j = c.length-1; j>= c.length-20; j--){
            entry = createNode("li");
-           entry.innerHTML = c[j];
+           entry.innerHTML = c[j]
            entriesList1.appendChild(entry);
        }
        
@@ -62,10 +61,13 @@ function displayEntries(){
 
 function sendCalc(){
     var textCalc = document.getElementById("calculus");
-    
+    var dt= new Date();
+    var utcDate = dt.toUTCString();
     let dataCalc = {
          name:"Calculus",
          message: textCalc.value,
+         //time stamp 
+         time : utcDate,
          }
          
     var encoded = new URLSearchParams(dataCalc);
@@ -89,10 +91,12 @@ function sendCalc(){
     
     function sendWeb(){
     var textWeb = document.getElementById("webtech");
-    
+    var dt= new Date();
+    var utcDate = dt.toUTCString();
     let dataWeb = {
         name:"WebTech",
         message: textWeb.value,
+        time:  utcDate,
     }
    
     var encoded2 = new URLSearchParams(dataWeb);

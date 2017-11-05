@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var BearSchema = new Schema({
     name : String,
-    message : String
+    message : String,
+    time: String
 });
 
 module.exports = mongoose.model('Bear', BearSchema);
